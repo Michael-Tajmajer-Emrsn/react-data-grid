@@ -2,6 +2,13 @@ const webpack = require('webpack');
 const argv = require('minimist')(process.argv.slice(2));
 const RELEASE = argv.release;
 
+// Hack for Ubuntu on Windows: interface enumeration fails with EINVAL, so return empty.
+try {
+  require('os').networkInterfaces();
+} catch (e) {
+  require('os').networkInterfaces = () => ({});
+}
+
 function getPlugins() {
   const nodeEnv = RELEASE ? '"production"' : '"development"';
   var pluginsBase =  [
