@@ -1,5 +1,5 @@
 {
-  "name": "react-data-grid",
+  "name": "emrsn-react-data-grid",
   "version": "2.0.1",
   "description": "Data grid for React",
   "main": "src/index.js",
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/adazzle/react-data-grid.git"
+    "url": "git://github.com/Michael-Tajmajer-Emrsn/react-data-grid.git"
   },
   "keywords": [
     "react",
