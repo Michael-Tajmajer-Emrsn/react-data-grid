@@ -1,0 +1,36 @@
+@estermer You can use the following steps to re-bundle react-autocomplete using my PR:
+
+git clone git@github.com:madprog/react-autocomplete.git -b fix-release-bundle
+cd react-autocomplete
+npm install
+node_modules/.bin/gulp bundle --release
+The compilation results can be found in lib/: reactAutoComplete.js and reactAutoComplete.min.js
+
+You can then use these other steps to re-bundle react-data-grid-addons (where v2.0.2 is the tag or branch of the version you need; it may be master if you need the last patches):
+
+cd ..
+git clone git@github.com:adazzle/react-data-grid.git -b v2.0.2
+cd react-data-grid
+npm install
+npm install ../react-autocomplete
+cp ../react-autocomplete/lib/*.js node_modules/ron-react-autocomplete/lib
+npm run build
+npm run beforepublish
+Then in your project, you can copy the output files to your node_modules/react-data-grid* folders:
+
+cd /path/to/your/project
+rm -r node_modules/react-data-grid
+cp -r /path/to/our/build/react-data-grid/packages/react-data-grid node_modules/
+rm -r node_modules/react-data-grid-addons
+cp -r /path/to/our/build/react-data-grid/packages/react-data-grid-addons node_modules/
+You should get rid of the unwanted debug code:
+
+# Before:
+$ grep -l '"production"!==t\.env\.NODE_ENV' /workspace/project/node_modules/react-data-grid-addons/dist/react-data-grid-addons.min.js
+/workspace/project/node_modules/react-data-grid-addons/dist/react-data-grid-addons.min.js
+# After:
+$ grep -l '"production"!==t\.env\.NODE_ENV' /workspace/project/node_modules/react-data-grid-addons/dist/react-data-grid-addons.min.js
+zsh: exit 1     grep -l '"production"!==t\.env\.NODE_ENV'
+ @wKovacs64
+wKovacs64 commented on Jun 14
+I think you also need npm run beforepublish at the end of the second code block to rewrite the react-data-grid exports to their respective bundled outputs after building. Otherwise, the exports point to src instead of dist.
