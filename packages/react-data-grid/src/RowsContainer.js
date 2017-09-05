@@ -1,13 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const SimpleRowsContainer = (props) => {
-  return (
-    <div key="rows-container">
-      {props.rows}
-    </div>
-  );
-};
+class SimpleRowsContainer extends React.PureComponent {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <div key="rows-container" id="test-id">
+        {this.props.rows}
+      </div>
+    );
+  }
+}
 
 SimpleRowsContainer.propTypes = {
   width: PropTypes.number,
