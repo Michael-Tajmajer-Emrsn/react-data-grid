@@ -2,9 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 import KeyboardHandlerMixin from '../KeyboardHandlerMixin';
+const createReactClass = require('create-react-class');
 
 
-let TestComponent = React.createClass({
+let TestComponent = createReactClass({
   mixins: [KeyboardHandlerMixin],
   render: function() {
     return (

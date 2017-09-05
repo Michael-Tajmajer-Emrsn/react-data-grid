@@ -5,6 +5,7 @@ const React = require('react');
 const { Editors, Toolbar, Formatters } = require('react-data-grid-addons');
 const { AutoComplete: AutoCompleteEditor, DropDownEditor } = Editors;
 const { ImageFormatter } = Formatters;
+const createReactClass = require('create-react-class');
 
 faker.locale = 'en_GB';
 
@@ -53,7 +54,7 @@ const counties = [
 
 const titles = ['Dr.', 'Mr.', 'Mrs.', 'Miss', 'Ms.'];
 
-const Example = React.createClass({
+const Example = createReactClass({
   getInitialState() {
     this._columns = [
       {

@@ -1,8 +1,9 @@
 const React              = require('react');
 const PropTypes          = require('prop-types');
 const ExcelColumn        = require('../../PropTypeShapes/ExcelColumn');
+const createReactClass   = require('create-react-class');
 
-const FilterableHeaderCell = React.createClass({
+const FilterableHeaderCell = createReactClass({
 
   propTypes: {
     onChange: PropTypes.func.isRequired,

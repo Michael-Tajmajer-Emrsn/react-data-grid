@@ -1,7 +1,7 @@
 {
   "name": "emrsn-react-data-grid",
   "types": "./index.d.ts",
-  "version": "2.0.593",
+  "version": "2.0.594",
   "description": "The grid core",
   "scripts": {
     "beforepublish": "node ../../ci/publish/replacePackageEntry react-data-grid true",

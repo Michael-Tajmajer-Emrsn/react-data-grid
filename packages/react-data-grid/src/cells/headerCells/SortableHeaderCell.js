@@ -7,7 +7,7 @@ const DEFINE_SORT = {
   NONE: 'NONE'
 };
 
-const SortableHeaderCell = React.createClass({
+const SortableHeaderCell = createReactClass({
   propTypes: {
     columnKey: PropTypes.string.isRequired,
     column: PropTypes.shape({ name: PropTypes.node }),

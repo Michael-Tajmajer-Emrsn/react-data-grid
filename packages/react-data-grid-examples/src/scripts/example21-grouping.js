@@ -9,6 +9,7 @@ const {
   Draggable: { Container: DraggableContainer },
   Formatters: { ImageFormatter }
 } = require('react-data-grid-addons');
+const createReactClass = require('create-react-class');
 
 faker.locale = 'en_GB';
 
@@ -126,7 +127,7 @@ const columns = [
   }
 ];
 
-const CustomToolbar = React.createClass({
+const CustomToolbar = createReactClass({
   propTypes: {
     groupBy: PropTypes.array.isRequired,
     onColumnGroupAdded: PropTypes.func.isRequired,
@@ -141,7 +142,7 @@ const CustomToolbar = React.createClass({
 });
 
 
-const Example = React.createClass({
+const Example = createReactClass({
   getInitialState() {
     let fakeRows = createRows(2000);
     return {rows: fakeRows, groupBy: [], expandedRows: {}};

@@ -12,6 +12,7 @@ const RowUtils              = require('./RowUtils');
 const ColumnUtils           = require('./ColumnUtils');
 const KeyCodes              = require('./KeyCodes');
 const isFunction            = require('./utils/isFunction');
+const createReactClass      = require('create-react-class');
 import AppConstants from './AppConstants';
 require('../../../themes/react-data-grid-core.css');
 require('../../../themes/react-data-grid-checkbox.css');
@@ -43,7 +44,7 @@ type RowUpdateEvent = {
   rowIdx: number;
 };
 
-const ReactDataGrid = React.createClass({
+const ReactDataGrid = createReactClass({
 
   mixins: [
     ColumnMetricsMixin,

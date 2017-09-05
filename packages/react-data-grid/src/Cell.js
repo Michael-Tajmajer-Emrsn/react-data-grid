@@ -11,12 +11,13 @@ const ColumnUtils = require('./ColumnUtils');
 const createObjectWithProperties = require('./createObjectWithProperties');
 import CellExpand from './CellExpand';
 import ChildRowDeleteButton from './ChildRowDeleteButton';
+const createReactClass = require('create-react-class');
 require('../../../themes/react-data-grid-cell.css');
 
 // The list of the propTypes that we want to include in the Cell div
 const knownDivPropertyKeys = ['height', 'tabIndex', 'value'];
 
-const Cell = React.createClass({
+const Cell = createReactClass({
 
   propTypes: {
     rowIdx: PropTypes.number.isRequired,

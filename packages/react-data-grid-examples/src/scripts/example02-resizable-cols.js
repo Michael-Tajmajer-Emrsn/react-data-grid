@@ -1,8 +1,9 @@
 const ReactDataGrid = require('react-data-grid');
 const exampleWrapper = require('../components/exampleWrapper');
 const React = require('react');
+const createReactClass = require('create-react-class');
 
-const Example = React.createClass({
+const Example = createReactClass({
   getInitialState() {
     this.createRows();
     this._columns = [
@@ -79,7 +80,7 @@ const Example = React.createClass({
         rowGetter={this.rowGetter}
         rowsCount={this._rows.length}
         minHeight={500}
-        minColumnWidth={120} 
+        minColumnWidth={120}
       />);
   }
 });

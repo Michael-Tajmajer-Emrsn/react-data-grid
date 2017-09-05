@@ -6,6 +6,7 @@ import dropTargetRowContainer from '../DropTargetRowContainer';
 import {DragTestSource} from './TestDragSources';
 import { _helpers } from 'react-data-grid';
 const { test: { GridPropHelpers } } = _helpers;
+const createReactClass = require('create-react-class');
 
 class fakeRow extends Component {
   render() {
@@ -18,7 +19,7 @@ class fakeRow extends Component {
  */
 function wrapInTestContext(DecoratedComponent) {
   return DragDropContext(TestBackend)(
-    React.createClass({
+    createReactClass({
       render() {
         return <DecoratedComponent {...this.props} />;
       }

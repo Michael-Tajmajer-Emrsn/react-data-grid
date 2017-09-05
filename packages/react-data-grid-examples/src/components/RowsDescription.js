@@ -1,5 +1,5 @@
-
-module.exports = React.createClass({
+const createReactClass = require('create-react-class')
+module.exports = createReactClass({
   render : function(){
     return(
       <div>

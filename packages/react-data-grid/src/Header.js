@@ -8,7 +8,8 @@ const HeaderRow           = require('./HeaderRow');
 const getScrollbarSize    = require('./getScrollbarSize');
 const PropTypes           = require('prop-types');
 const createObjectWithProperties = require('./createObjectWithProperties');
-const cellMetaDataShape    = require('./PropTypeShapes/CellMetaDataShape');
+const cellMetaDataShape   = require('./PropTypeShapes/CellMetaDataShape');
+const createReactClass    = require('create-react-class');
 require('../../../themes/react-data-grid-header.css');
 
 type Column = {
@@ -18,7 +19,7 @@ type Column = {
 // The list of the propTypes that we want to include in the Header div
 const knownDivPropertyKeys = ['height', 'onScroll'];
 
-const Header = React.createClass({
+const Header = createReactClass({
   propTypes: {
     columnMetrics: PropTypes.shape({  width: PropTypes.number.isRequired, columns: PropTypes.any }).isRequired,
     totalWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),

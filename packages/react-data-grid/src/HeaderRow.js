@@ -8,6 +8,7 @@ const SortableHeaderCell    = require('./cells/headerCells/SortableHeaderCell');
 const FilterableHeaderCell  = require('./cells/headerCells/FilterableHeaderCell');
 const HeaderCellType    = require('./HeaderCellType');
 const createObjectWithProperties = require('./createObjectWithProperties');
+const createReactClass  = require('create-react-class');
 require('../../../themes/react-data-grid-header.css');
 
 const PropTypes = require('prop-types');
@@ -22,7 +23,7 @@ const HeaderRowStyle  = {
 // The list of the propTypes that we want to include in the HeaderRow div
 const knownDivPropertyKeys = ['width', 'height', 'style', 'onScroll'];
 
-const HeaderRow = React.createClass({
+const HeaderRow = createReactClass({
   propTypes: {
     width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     height: PropTypes.number.isRequired,

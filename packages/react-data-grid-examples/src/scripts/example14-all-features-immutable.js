@@ -13,6 +13,7 @@ const {
   Formatters:
     { ImageFormatter }} = require('react-data-grid-addons');
 const faker = require('faker');
+const createReactClass = require('create-react-class');
 
 const counties = [
   { id: 0, title: 'Bedfordshire'},
@@ -165,7 +166,7 @@ const columns = [
   }
 ];
 
-const MyContextMenu = React.createClass({
+const MyContextMenu = createReactClass({
   propTypes: {
     rowIdx: PropTypes.string.isRequired,
     idx: PropTypes.string.isRequired
@@ -183,7 +184,7 @@ const MyContextMenu = React.createClass({
   }
 });
 
-const Component = React.createClass({
+const Component = createReactClass({
   propTypes: {
     handleCellDrag: PropTypes.func.isRequired
   },

@@ -6,13 +6,14 @@ const ScrollShim = require('./ScrollShim');
 const Row = require('./Row');
 const cellMetaDataShape = require('./PropTypeShapes/CellMetaDataShape');
 const RowUtils = require('./RowUtils');
+const createReactClass = require('create-react-class');
 require('../../../themes/react-data-grid-core.css');
 
 import shallowEqual from 'fbjs/lib/shallowEqual';
 import RowsContainer from './RowsContainer';
 import RowGroup from './RowGroup';
 
-const Canvas = React.createClass({
+const Canvas = createReactClass({
   mixins: [ScrollShim],
 
   propTypes: {
