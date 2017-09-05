@@ -1,6 +1,7 @@
 const React         = require('react');
 const PropTypes     = require('prop-types');
 const createObjectWithProperties = require('./createObjectWithProperties');
+const createReactClass = require('create-react-class');
 require('../../../themes/react-data-grid-header.css');
 
 // The list of the propTypes that we want to include in the Draggable div
