@@ -1,6 +1,7 @@
 const React              = require('react');
 const PropTypes          = require('prop-types');
 const joinClasses        = require('classnames');
+const createReactClass   = require('create-react-class');
 const DEFINE_SORT = {
   ASC: 'ASC',
   DESC: 'DESC',
