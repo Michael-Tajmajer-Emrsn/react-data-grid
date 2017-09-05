@@ -1,4 +1,5 @@
 const faker = require('faker');
+const PropTypes = require('prop-types');
 const ReactDataGrid = require('react-data-grid');
 const exampleWrapper = require('../components/exampleWrapper');
 const React = require('react');
@@ -127,9 +128,9 @@ const columns = [
 
 const CustomToolbar = React.createClass({
   propTypes: {
-    groupBy: React.PropTypes.array.isRequired,
-    onColumnGroupAdded: React.PropTypes.func.isRequired,
-    onColumnGroupDeleted: React.PropTypes.func.isRequired
+    groupBy: PropTypes.array.isRequired,
+    onColumnGroupAdded: PropTypes.func.isRequired,
+    onColumnGroupDeleted: PropTypes.func.isRequired
   },
 
   render() {
@@ -167,7 +168,7 @@ const Example = React.createClass({
     if (isNotInGroups) {
       columnGroups.push({key: activeColumn.key, name: activeColumn.name});
     }
-   
+
     this.setState({groupBy: columnGroups});
   },
 

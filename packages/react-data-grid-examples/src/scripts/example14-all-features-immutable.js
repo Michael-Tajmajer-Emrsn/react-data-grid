@@ -1,4 +1,5 @@
 const ReactDataGrid = require('react-data-grid');
+const PropTypes = require('prop-types');
 const exampleWrapper = require('../components/exampleWrapper');
 const React = require('react');
 const FakeObjectDataStore = require('./FakeObjectDataStore');
@@ -166,8 +167,8 @@ const columns = [
 
 const MyContextMenu = React.createClass({
   propTypes: {
-    rowIdx: React.PropTypes.string.isRequired,
-    idx: React.PropTypes.string.isRequired
+    rowIdx: PropTypes.string.isRequired,
+    idx: PropTypes.string.isRequired
   },
 
   onItemClick() {
@@ -184,7 +185,7 @@ const MyContextMenu = React.createClass({
 
 const Component = React.createClass({
   propTypes: {
-    handleCellDrag: React.PropTypes.func.isRequired
+    handleCellDrag: PropTypes.func.isRequired
   },
 
   getInitialState() {
