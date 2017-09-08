@@ -503,14 +503,14 @@ declare namespace AdazzleReactDataGridPlugins {
     }
 }
 
-declare module "react-data-grid" {
+declare module "emrsn-react-data-grid" {
     import ReactDataGrid = AdazzleReactDataGrid.ReactDataGrid;
 
     // commonjs export
     export = ReactDataGrid;
 }
 
-declare module "react-data-grid-addons" {
+declare module "emrsn-react-data-grid-addons" {
     import Plugins = AdazzleReactDataGridPlugins;
     import Editors = Plugins.Editors;
     import Filters = Plugins.Filters;
