@@ -75,8 +75,6 @@ const Canvas = createReactClass({
     };
   },
 
-  rows: [],
-
   getInitialState() {
     return {
       displayStart: this.props.displayStart,
@@ -86,6 +84,7 @@ const Canvas = createReactClass({
   },
 
   componentWillMount() {
+    this.rows = [];
     this._currentRowsLength = 0;
     this._currentRowsRange = { start: 0, end: 0 };
     this._scroll = { scrollTop: 0, scrollLeft: 0 };

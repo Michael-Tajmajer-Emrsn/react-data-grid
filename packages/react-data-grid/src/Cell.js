@@ -29,7 +29,7 @@ const Cell = createReactClass({
     height: PropTypes.number,
     tabIndex: PropTypes.number,
     column: PropTypes.shape(ExcelColumn).isRequired,
-    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.object, PropTypes.bool]).isRequired,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.object, PropTypes.bool]),
     isExpanded: PropTypes.bool,
     isRowSelected: PropTypes.bool,
     cellMetaData: PropTypes.shape(CellMetaDataShape).isRequired,
