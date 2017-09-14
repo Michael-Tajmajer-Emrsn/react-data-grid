@@ -35,7 +35,14 @@ const HeaderCell = createReactClass({
   },
 
   onDragStart(e: SyntheticMouseEvent) {
-    this.setState({resizing: true});
+
+    // get the scale
+    const node = ReactDOM.findDOMNode(e.target);
+    const boundingRectangle = node.getBoundingClientRect();
+    const scaledWidth = boundingRectangle.right - boundingRectangle.left;
+    const scale = scaledWidth / node.offsetWidth;
+
+    this.setState({resizing: true, scale});
     // need to set dummy data for FF
     if (e && e.dataTransfer && e.dataTransfer.setData) e.dataTransfer.setData('text/plain', 'dummy');
   },
@@ -45,6 +52,7 @@ const HeaderCell = createReactClass({
     if (resize) {
       let width = this.getWidthFromMouseEvent(e);
       if (width > 0) {
+        width = width / this.state.scale;
         resize(this.props.column, width);
       }
     }
@@ -52,8 +60,9 @@ const HeaderCell = createReactClass({
 
   onDragEnd(e: SyntheticMouseEvent) {
     let width = this.getWidthFromMouseEvent(e);
+    width = width / this.state.scale;
     this.props.onResizeEnd(this.props.column, width);
-    this.setState({resizing: false});
+    this.setState({resizing: false, scale: null});
   },
 
   getWidthFromMouseEvent(e: SyntheticMouseEvent): number {
