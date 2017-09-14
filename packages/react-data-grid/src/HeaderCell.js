@@ -35,7 +35,6 @@ const HeaderCell = createReactClass({
   },
 
   onDragStart(e: SyntheticMouseEvent) {
-
     // get the scale
     const node = ReactDOM.findDOMNode(e.target);
     const boundingRectangle = node.getBoundingClientRect();
