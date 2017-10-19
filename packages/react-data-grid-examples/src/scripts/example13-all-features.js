@@ -5,7 +5,6 @@ const React = require('react');
 const { Editors, Toolbar, Formatters } = require('react-data-grid-addons');
 const { AutoComplete: AutoCompleteEditor, DropDownEditor } = Editors;
 const { ImageFormatter } = Formatters;
-const createReactClass = require('create-react-class');
 
 faker.locale = 'en_GB';
 
@@ -54,8 +53,9 @@ const counties = [
 
 const titles = ['Dr.', 'Mr.', 'Mrs.', 'Miss', 'Ms.'];
 
-const Example = createReactClass({
-  getInitialState() {
+class Example extends React.Component {
+  constructor(props, context) {
+    super(props, context);
     this._columns = [
       {
         key: 'id',
@@ -162,18 +162,18 @@ const Example = createReactClass({
       }
     ];
 
-    return { rows: this.createRows(2000) };
-  },
+    this.state = { rows: this.createRows(2000) };
+  }
 
-  createRows(numberOfRows) {
+  createRows = (numberOfRows) => {
     let rows = [];
     for (let i = 0; i < numberOfRows; i++) {
       rows[i] = this.createFakeRowObjectData(i);
     }
     return rows;
-  },
+  };
 
-  createFakeRowObjectData(index) {
+  createFakeRowObjectData = (index) => {
     return {
       id: 'id_' + index,
       avartar: faker.image.avatar(),
@@ -191,9 +191,9 @@ const Example = createReactClass({
       words: faker.lorem.words(),
       sentence: faker.lorem.sentence()
     };
-  },
+  };
 
-  getColumns() {
+  getColumns = () => {
     let clonedColumns = this._columns.slice();
     clonedColumns[2].events = {
       onClick: (ev, args) => {
@@ -204,9 +204,9 @@ const Example = createReactClass({
     };
 
     return clonedColumns;
-  },
+  };
 
-  handleGridRowsUpdated({ fromRow, toRow, updated }) {
+  handleGridRowsUpdated = ({ fromRow, toRow, updated }) => {
     let rows = this.state.rows.slice();
 
     for (let i = fromRow; i <= toRow; i++) {
@@ -216,9 +216,9 @@ const Example = createReactClass({
     }
 
     this.setState({ rows });
-  },
+  };
 
-  handleAddRow({ newRowIndex }) {
+  handleAddRow = ({ newRowIndex }) => {
     const newRow = {
       value: newRowIndex,
       userStory: '',
@@ -229,19 +229,19 @@ const Example = createReactClass({
     let rows = this.state.rows.slice();
     rows = React.addons.update(rows, {$push: [newRow]});
     this.setState({ rows });
-  },
+  };
 
-  getRowAt(index) {
+  getRowAt = (index) => {
     if (index < 0 || index > this.getSize()) {
       return undefined;
     }
 
     return this.state.rows[index];
-  },
+  };
 
-  getSize() {
+  getSize = () => {
     return this.state.rows.length;
-  },
+  };
 
   render() {
     return (
@@ -258,7 +258,7 @@ const Example = createReactClass({
         minHeight={600}
         rowScrollTimeout={200} />);
   }
-});
+}
 
 module.exports = exampleWrapper({
   WrappedComponent: Example,

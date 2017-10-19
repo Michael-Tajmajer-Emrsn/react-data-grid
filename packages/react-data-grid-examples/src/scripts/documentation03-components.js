@@ -1,6 +1,6 @@
 const markdown = require('markdown');
 const PropTypes = require('prop-types');
-const createReactClass = require('create-react-class');
+var createReactClass = require('create-react-class');
 
 var DocumentContainer = createReactClass({
   propTypes: {

@@ -1,28 +1,28 @@
 const ReactDataGrid = require('react-data-grid');
 const exampleWrapper = require('../components/exampleWrapper');
 const React = require('react');
-const createReactClass = require('create-react-class');
 
-const EmptyRowsView = createReactClass({
+class EmptyRowsView extends React.Component {
   render() {
     return (<div>Nothing to show</div>);
   }
-});
+}
 
-const Example = createReactClass({
-  getInitialState() {
+class Example extends React.Component {
+  constructor(props) {
+    super(props);
     this._rows = [];
     this._columns = [
       { key: 'id', name: 'ID' },
       { key: 'title', name: 'Title' },
       { key: 'count', name: 'Count' }];
 
-    return null;
-  },
+    this.state = null;
+  }
 
-  rowGetter() {
+  rowGetter = () => {
     return _rows[i];
-  },
+  };
 
   render() {
     return  (
@@ -33,7 +33,7 @@ const Example = createReactClass({
         minHeight={500}
         emptyRowsView={EmptyRowsView} />);
   }
-});
+}
 
 module.exports = exampleWrapper({
   WrappedComponent: Example,

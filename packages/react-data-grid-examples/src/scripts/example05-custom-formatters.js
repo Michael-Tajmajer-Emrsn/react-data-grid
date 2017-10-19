@@ -1,14 +1,13 @@
 const ReactDataGrid = require('react-data-grid');
-const PropTypes = require('prop-types');
 const exampleWrapper = require('../components/exampleWrapper');
 const React = require('react');
-const createReactClass = require('create-react-class');
+const PropTypes = require('prop-types');
 
 // Custom Formatter component
-const PercentCompleteFormatter = createReactClass({
-  propTypes: {
+class PercentCompleteFormatter extends React.Component {
+  static propTypes = {
     value: PropTypes.number.isRequired
-  },
+  };
 
   render() {
     const percentComplete = this.props.value + '%';
@@ -19,10 +18,11 @@ const PercentCompleteFormatter = createReactClass({
         </div>
       </div>);
   }
-});
+}
 
-const Example = createReactClass({
-  getInitialState() {
+class Example extends React.Component {
+  constructor(props, context) {
+    super(props, context);
     this.createRows();
     this._columns = [
       {
@@ -57,14 +57,14 @@ const Example = createReactClass({
       }
     ];
 
-    return null;
-  },
+    this.state = null;
+  }
 
-  getRandomDate(start, end) {
+  getRandomDate = (start, end) => {
     return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime())).toLocaleDateString();
-  },
+  };
 
-  createRows() {
+  createRows = () => {
     let rows = [];
     for (let i = 1; i < 100; i++) {
       rows.push({
@@ -79,11 +79,11 @@ const Example = createReactClass({
     }
 
     this._rows = rows;
-  },
+  };
 
-  rowGetter(i) {
+  rowGetter = (i) => {
     return this._rows[i];
-  },
+  };
 
   render() {
     return  (
@@ -93,7 +93,7 @@ const Example = createReactClass({
         rowsCount={this._rows.length}
         minHeight={500} />);
   }
-});
+}
 
 const exampleDescription = (
   <p>Its possible to create your own formatters for a given column by setting its <code>formatter</code> property. Here a React component is used to format the %complete column. A custom formatter will always receive a <code>value</code> prop, the value of the cell and this can be used however needed. Here we render a progress bar based on the <code>props.value</code></p>);

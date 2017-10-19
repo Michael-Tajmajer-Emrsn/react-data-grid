@@ -1,18 +1,18 @@
 const React                 = require('react');
 const PropTypes             = require('prop-types');
-const ReactDOM              = require('react-dom');
+const createReactClass = require('create-react-class');
+const ReactDOM = require('react-dom');
 const BaseGrid              = require('./Grid');
 const Row                   = require('./Row');
 const ExcelColumn           = require('./PropTypeShapes/ExcelColumn');
 const KeyboardHandlerMixin  = require('./KeyboardHandlerMixin');
 const CheckboxEditor        = require('./editors/CheckboxEditor');
-const DOMMetrics            = require('./DOMMetrics');
-const ColumnMetricsMixin    = require('./ColumnMetricsMixin');
-const RowUtils              = require('./RowUtils');
-const ColumnUtils           = require('./ColumnUtils');
-const KeyCodes              = require('./KeyCodes');
-const isFunction            = require('./utils/isFunction');
-const createReactClass      = require('create-react-class');
+const DOMMetrics           = require('./DOMMetrics');
+const ColumnMetricsMixin      = require('./ColumnMetricsMixin');
+const RowUtils = require('./RowUtils');
+const ColumnUtils = require('./ColumnUtils');
+const KeyCodes = require('./KeyCodes');
+const isFunction = require('./utils/isFunction');
 import AppConstants from './AppConstants';
 require('../../../themes/react-data-grid-core.css');
 require('../../../themes/react-data-grid-checkbox.css');
@@ -45,6 +45,7 @@ type RowUpdateEvent = {
 };
 
 const ReactDataGrid = createReactClass({
+  displayName: 'ReactDataGrid',
 
   mixins: [
     ColumnMetricsMixin,
@@ -474,6 +475,7 @@ const ReactDataGrid = createReactClass({
   useNewRowSelection() {
     return this.props.rowSelection && this.props.rowSelection.selectBy;
   },
+
   // return false if not a shift select so can be handled as normal row selection
   handleShiftSelect(rowIdx) {
     if (this.state.lastRowIdxUiSelected > -1 && this.isSingleKeyDown(KeyCodes.Shift)) {
@@ -536,6 +538,7 @@ const ReactDataGrid = createReactClass({
       this.props.rowSelection.onRowsSelected([{rowIdx, row: rowData}]);
     }
   },
+
   // columnKey not used here as this function will select the whole row,
   // but needed to match the function signature in the CheckboxEditor
   handleRowSelect(rowIdx: number, columnKey: string, rowData, e: Event) {
@@ -641,6 +644,7 @@ const ReactDataGrid = createReactClass({
     }
     return rows;
   },
+
   getInitialSelectedRows: function() {
     let selectedRows = [];
     for (let i = 0; i < this.props.rowsCount; i++) {
@@ -648,6 +652,7 @@ const ReactDataGrid = createReactClass({
     }
     return selectedRows;
   },
+
   getRowSelectionProps() {
     if (this.props.rowSelection) {
       return this.props.rowSelection.selectBy;
@@ -655,6 +660,7 @@ const ReactDataGrid = createReactClass({
 
     return null;
   },
+
   getSelectedRows() {
     if (this.props.rowSelection) {
       return null;
@@ -662,6 +668,7 @@ const ReactDataGrid = createReactClass({
 
     return this.state.selectedRows.filter(r => r.isSelected === true);
   },
+
   getSelectedValue(): string {
     let rowIdx = this.state.selected.rowIdx;
     let idx = this.state.selected.idx;
@@ -871,7 +878,6 @@ const ReactDataGrid = createReactClass({
 
     return this._cachedComputedColumns;
   },
-
 
   copyPasteEnabled: function(): boolean {
     return this.props.onCellCopyPaste !== null;

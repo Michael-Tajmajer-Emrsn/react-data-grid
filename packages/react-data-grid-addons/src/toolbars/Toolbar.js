@@ -1,10 +1,9 @@
 const React = require('react');
 const PropTypes = require('prop-types');
-const createReactClass = require('create-react-class');
 require('../../../../themes/react-data-grid-toolbar.css');
 
-const Toolbar = createReactClass({
-  propTypes: {
+class Toolbar extends React.Component {
+  static propTypes = {
     onAddRow: PropTypes.func,
     onToggleFilter: PropTypes.func,
     enableFilter: PropTypes.bool,
@@ -12,37 +11,35 @@ const Toolbar = createReactClass({
     addRowButtonText: PropTypes.string,
     filterRowsButtonText: PropTypes.string,
     children: PropTypes.any
-  },
+  };
 
-  onAddRow() {
+  static defaultProps = {
+    enableAddRow: true,
+    addRowButtonText: 'Add Row',
+    filterRowsButtonText: 'Filter Rows'
+  };
+
+  onAddRow = () => {
     if (this.props.onAddRow !== null && this.props.onAddRow instanceof Function) {
       this.props.onAddRow({newRowIndex: this.props.numberOfRows});
     }
-  },
+  };
 
-  getDefaultProps() {
-    return {
-      enableAddRow: true,
-      addRowButtonText: 'Add Row',
-      filterRowsButtonText: 'Filter Rows'
-    };
-  },
-
-  renderAddRowButton() {
+  renderAddRowButton = () => {
     if (this.props.onAddRow ) {
       return (<button type="button" className="btn" onClick={this.onAddRow}>
         {this.props.addRowButtonText}
       </button>);
     }
-  },
+  };
 
-  renderToggleFilterButton() {
+  renderToggleFilterButton = () => {
     if (this.props.enableFilter) {
       return (<button type="button" className="btn" onClick={this.props.onToggleFilter}>
       {this.props.filterRowsButtonText}
     </button>);
     }
-  },
+  };
 
   render() {
     return (
@@ -54,6 +51,6 @@ const Toolbar = createReactClass({
         </div>
       </div>);
   }
-});
+}
 
 module.exports = Toolbar;

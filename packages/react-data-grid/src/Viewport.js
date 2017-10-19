@@ -1,11 +1,12 @@
 const React                = require('react');
+const createReactClass = require('create-react-class');
 const Canvas               = require('./Canvas');
 const ViewportScroll       = require('./ViewportScrollMixin');
 const cellMetaDataShape    = require('./PropTypeShapes/CellMetaDataShape');
 const PropTypes            = require('prop-types');
-const createReactClass     = require('create-react-class');
 
 const Viewport = createReactClass({
+  displayName: 'Viewport',
   mixins: [ViewportScroll],
 
   propTypes: {

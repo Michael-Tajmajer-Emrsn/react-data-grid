@@ -1,10 +1,10 @@
 const ReactDataGrid = require('react-data-grid');
 const exampleWrapper = require('../components/exampleWrapper');
 const React = require('react');
-const createReactClass = require('create-react-class');
 
-const Example = createReactClass({
-  getInitialState() {
+class Example extends React.Component {
+  constructor(props, context) {
+    super(props, context);
     this.createRows();
     this._columns = [
       {
@@ -44,14 +44,14 @@ const Example = createReactClass({
       }
     ];
 
-    return null;
-  },
+    this.state = null;
+  }
 
-  getRandomDate(start, end) {
+  getRandomDate = (start, end) => {
     return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime())).toLocaleDateString();
-  },
+  };
 
-  createRows() {
+  createRows = () => {
     let rows = [];
     for (let i = 1; i < 1000; i++) {
       rows.push({
@@ -66,11 +66,11 @@ const Example = createReactClass({
     }
 
     this._rows = rows;
-  },
+  };
 
-  rowGetter(i) {
+  rowGetter = (i) => {
     return this._rows[i];
-  },
+  };
 
   render() {
     return  (
@@ -80,7 +80,7 @@ const Example = createReactClass({
         rowsCount={this._rows.length}
         minHeight={500} />);
   }
-});
+}
 
 const exampleDescription = <p>To make a given column frozen, set <code>column.locked = true</code>. In this example, the ID columns has been frozen and will remain in position as you scroll horizontally</p>
 

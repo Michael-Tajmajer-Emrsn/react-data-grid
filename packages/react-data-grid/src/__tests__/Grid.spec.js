@@ -1,32 +1,36 @@
 const React         = require('react');
-const ReactDOM      = require('react-dom');
+const ReactDOM = require('react-dom');
 const rewire        = require('rewire');
 const Grid          = rewire('../Grid');
 const TestUtils     = require('react-addons-test-utils');
 const helpers       = require('../helpers/test/GridPropHelpers');
-const rewireModule  = require('../../../../test/rewireModule');
-const createReactClass = require('create-react-class');
+const rewireModule = require('../../../../test/rewireModule');
 import { shallow } from 'enzyme';
 import { ContextMenu } from 'react-contextmenu';
 
 let testElement;
-let HeaderStub = createReactClass({
-  setScrollLeft() {
-  },
+
+class HeaderStub extends React.Component {
+  setScrollLeft = () => {
+  };
+
   render() {
     return (<div></div>);
   }
-});
-let ViewportStub = createReactClass({
-  getScroll() {
+}
+
+class ViewportStub extends React.Component {
+  getScroll = () => {
     return {scrollLeft: 0};
-  },
-  setScrollLeft() {
-  },
+  };
+
+  setScrollLeft = () => {
+  };
+
   render() {
     return (<div></div>);
   }
-});
+}
 
 describe('Base Grid Tests', () => {
   let testProps = {
@@ -101,11 +105,11 @@ describe('Base Grid Tests', () => {
 });
 
 describe('Empty Grid Tests', () => {
-  let EmptyRowsView = createReactClass({
-    render: function() {
+  class EmptyRowsView extends React.Component {
+    render() {
       return (<div>Nothing to show</div>);
     }
-  });
+  }
 
   let testProps = {
     columnMetrics: {

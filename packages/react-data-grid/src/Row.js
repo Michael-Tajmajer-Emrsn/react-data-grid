@@ -1,25 +1,26 @@
 import OverflowCell from './OverflowCell';
 import rowComparer from './RowComparer';
 const React = require('react');
+const createReactClass = require('create-react-class');
 const joinClasses = require('classnames');
 const Cell = require('./Cell');
 const ColumnUtilsMixin = require('./ColumnUtils');
 const cellMetaDataShape = require('./PropTypeShapes/CellMetaDataShape');
 const PropTypes = require('prop-types');
 const createObjectWithProperties = require('./createObjectWithProperties');
-const createReactClass = require('create-react-class');
 require('../../../themes/react-data-grid-row.css');
 
-const CellExpander = createReactClass({
+class CellExpander extends React.Component {
   render() {
     return (<Cell {...this.props} />);
   }
-});
+}
 
 // The list of the propTypes that we want to include in the Row div
 const knownDivPropertyKeys = ['height'];
 
 const Row = createReactClass({
+  displayName: 'Row',
 
   propTypes: {
     height: PropTypes.number.isRequired,

@@ -1,14 +1,14 @@
 const React             = require('react');
-const shallowEqual      = require('fbjs/lib/shallowEqual');
-const BaseHeaderCell    = require('./HeaderCell');
+const createReactClass = require('create-react-class');
+const shallowEqual    = require('fbjs/lib/shallowEqual');
+const BaseHeaderCell        = require('./HeaderCell');
 const getScrollbarSize  = require('./getScrollbarSize');
-const ExcelColumn       = require('./PropTypeShapes/ExcelColumn');
+const ExcelColumn  = require('./PropTypeShapes/ExcelColumn');
 const ColumnUtilsMixin  = require('./ColumnUtils');
 const SortableHeaderCell    = require('./cells/headerCells/SortableHeaderCell');
 const FilterableHeaderCell  = require('./cells/headerCells/FilterableHeaderCell');
-const HeaderCellType    = require('./HeaderCellType');
+const HeaderCellType = require('./HeaderCellType');
 const createObjectWithProperties = require('./createObjectWithProperties');
-const createReactClass  = require('create-react-class');
 require('../../../themes/react-data-grid-header.css');
 
 const PropTypes = require('prop-types');
@@ -24,6 +24,8 @@ const HeaderRowStyle  = {
 const knownDivPropertyKeys = ['width', 'height', 'style', 'onScroll'];
 
 const HeaderRow = createReactClass({
+  displayName: 'HeaderRow',
+
   propTypes: {
     width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     height: PropTypes.number.isRequired,

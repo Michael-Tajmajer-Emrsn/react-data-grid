@@ -1,40 +1,40 @@
 const ReactDataGrid = require('react-data-grid');
-const PropTypes = require('prop-types');
 const { Row } = ReactDataGrid;
 const exampleWrapper = require('../components/exampleWrapper');
 const React = require('react');
-const createReactClass = require('create-react-class');
+const PropTypes = require('prop-types');
 
-const RowRenderer = createReactClass({
-  propTypes: {
+class RowRenderer extends React.Component {
+  static propTypes = {
     idx: PropTypes.string.isRequired
-  },
+  };
 
-  setScrollLeft(scrollBy) {
+  setScrollLeft = (scrollBy) => {
     // if you want freeze columns to work, you need to make sure you implement this as apass through
     this.row.setScrollLeft(scrollBy);
-  },
+  };
 
-  getRowStyle() {
+  getRowStyle = () => {
     return {
       color: this.getRowBackground()
     };
-  },
+  };
 
-  getRowBackground() {
+  getRowBackground = () => {
     return this.props.idx % 2 ?  'green' : 'blue';
-  },
+  };
 
-  render: function() {
+  render() {
     // here we are just changing the style
     // but we could replace this with anything we liked, cards, images, etc
     // usually though it will just be a matter of wrapping a div, and then calling back through to the grid
     return (<div style={this.getRowStyle()}><Row ref={ node => this.row = node } {...this.props}/></div>);
   }
-});
+}
 
-const Example = createReactClass({
-  getInitialState() {
+class Example extends React.Component {
+  constructor(props, context) {
+    super(props, context);
     this.createRows();
     this._columns = [
       {
@@ -75,14 +75,14 @@ const Example = createReactClass({
       }
     ];
 
-    return null;
-  },
+    this.state = null;
+  }
 
-  getRandomDate(start, end) {
+  getRandomDate = (start, end) => {
     return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime())).toLocaleDateString();
-  },
+  };
 
-  createRows() {
+  createRows = () => {
     let rows = [];
     for (let i = 1; i < 1000; i++) {
       rows.push({
@@ -97,11 +97,11 @@ const Example = createReactClass({
     }
 
     this._rows = rows;
-  },
+  };
 
-  rowGetter(i) {
+  rowGetter = (i) => {
     return this._rows[i];
-  },
+  };
 
   render() {
     return  (
@@ -112,7 +112,7 @@ const Example = createReactClass({
         minHeight={500}
         rowRenderer={RowRenderer} />);
   }
-});
+}
 
 const exampleDescription = (
   <div>

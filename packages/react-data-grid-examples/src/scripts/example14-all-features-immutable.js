@@ -13,7 +13,6 @@ const {
   Formatters:
     { ImageFormatter }} = require('react-data-grid-addons');
 const faker = require('faker');
-const createReactClass = require('create-react-class');
 
 const counties = [
   { id: 0, title: 'Bedfordshire'},
@@ -166,14 +165,14 @@ const columns = [
   }
 ];
 
-const MyContextMenu = createReactClass({
-  propTypes: {
+class MyContextMenu extends React.Component {
+  static propTypes = {
     rowIdx: PropTypes.string.isRequired,
     idx: PropTypes.string.isRequired
-  },
+  };
 
-  onItemClick() {
-  },
+  onItemClick = () => {
+  };
 
   render() {
     return (
@@ -182,19 +181,20 @@ const MyContextMenu = createReactClass({
       </ContextMenu>
     );
   }
-});
+}
 
-const Component = createReactClass({
-  propTypes: {
-    handleCellDrag: PropTypes.func.isRequired
-  },
+class Component extends React.Component {
+  static propTypes = {
+    handleCellDrag: React.PropTypes.func.isRequired
+  };
 
-  getInitialState() {
+  constructor(props) {
+    super(props);
     const fakeRows = FakeObjectDataStore.createRows(100);
-    return { rows: Immutable.fromJS(fakeRows)};
-  },
+    this.state = { rows: Immutable.fromJS(fakeRows)};
+  }
 
-  handleGridRowsUpdated(e) {
+  handleGridRowsUpdated = (e) => {
     const { fromRow, toRow, updated } = e;
     let rows = this.state.rows.slice();
 
@@ -207,9 +207,9 @@ const Component = createReactClass({
     }
 
     this.setState({ rows });
-  },
+  };
 
-  handleAddRow({ newRowIndex }) {
+  handleAddRow = ({ newRowIndex }) => {
     const newRow = {
       id: newRowIndex,
       firstName: '',
@@ -219,18 +219,18 @@ const Component = createReactClass({
     let rows = this.state.rows.slice();
     rows = rows.push(Immutable.fromJS(newRow));
     this.setState({ rows });
-  },
+  };
 
-  getRowAt(index) {
+  getRowAt = (index) => {
     if (index < 0 || index > this.getSize()) {
       return undefined;
     }
     return this.state.rows.get(index);
-  },
+  };
 
-  getSize() {
+  getSize = () => {
     return this.state.rows.size;
-  },
+  };
 
   render() {
     return (
@@ -247,7 +247,7 @@ const Component = createReactClass({
         minHeight={600} />
       );
   }
-});
+}
 
 module.exports = exampleWrapper({
   WrappedComponent: Component,

@@ -1,9 +1,11 @@
 const React          = require('react');
-const Draggable      = require('./Draggable');
 const createReactClass = require('create-react-class');
+const Draggable      = require('./Draggable');
 require('../../../themes/react-data-grid-header.css');
 
 const ResizeHandle   = createReactClass({
+  displayName: 'ResizeHandle',
+
   style: {
     position: 'absolute',
     top: 0,

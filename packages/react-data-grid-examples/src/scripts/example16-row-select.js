@@ -1,10 +1,10 @@
 const ReactDataGrid = require('react-data-grid');
 const exampleWrapper = require('../components/exampleWrapper');
 const React = require('react');
-const createReactClass = require('create-react-class');
 
-const Example = createReactClass({
-  getInitialState() {
+class Example extends React.Component {
+  constructor(props) {
+    super(props);
     this._columns = [
       {
         key: 'id',
@@ -28,21 +28,21 @@ const Example = createReactClass({
         count: i * 1000
       });
     }
-    return { rows, selectedIndexes: [] };
-  },
+    this.state = { rows, selectedIndexes: [] };
+  }
 
-  rowGetter(i) {
+  rowGetter = (i) => {
     return this.state.rows[i];
-  },
+  };
 
-  onRowsSelected(rows) {
+  onRowsSelected = (rows) => {
     this.setState({selectedIndexes: this.state.selectedIndexes.concat(rows.map(r => r.rowIdx))});
-  },
+  };
 
-  onRowsDeselected(rows) {
+  onRowsDeselected = (rows) => {
     let rowIndexes = rows.map(r => r.rowIdx);
     this.setState({selectedIndexes: this.state.selectedIndexes.filter(i => rowIndexes.indexOf(i) === -1 )});
-  },
+  };
 
   render() {
     const rowText = this.state.selectedIndexes.length === 1 ? 'row' : 'rows';
@@ -66,7 +66,7 @@ const Example = createReactClass({
           }} />
       </div>);
   }
-});
+}
 
 const exampleDescription = (
   <div>

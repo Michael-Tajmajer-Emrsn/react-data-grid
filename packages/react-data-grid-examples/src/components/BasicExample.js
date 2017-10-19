@@ -1,7 +1,7 @@
 var ColsDescription       = require('./ColsDescription');
 var RowsDescription       = require('./RowsDescription');
 var RenderGridDescription = require('./RenderGrid');
-const createReactClass    = require('create-react-class');
+var createReactClass = require('create-react-class');
 
 module.exports = createReactClass({
   render : function(){

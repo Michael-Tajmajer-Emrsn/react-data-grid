@@ -1,10 +1,10 @@
 const ReactDataGrid = require('react-data-grid');
 const exampleWrapper = require('../components/exampleWrapper');
 const React = require('react');
-const createReactClass = require('create-react-class');
 
-const Example = createReactClass({
-  getInitialState() {
+class Example extends React.Component {
+  constructor(props, context) {
+    super(props, context);
     this._columns = [
       {
         key: 'id',
@@ -20,10 +20,10 @@ const Example = createReactClass({
       }
     ];
 
-    return { rows: this.createRows(1000) };
-  },
+    this.state = { rows: this.createRows(1000) };
+  }
 
-  createRows() {
+  createRows = () => {
     let rows = [];
     for (let i = 1; i < 1000; i++) {
       rows.push({
@@ -35,19 +35,19 @@ const Example = createReactClass({
     }
 
     return rows;
-  },
+  };
 
-  rowGetter(i) {
+  rowGetter = (i) => {
     return this.state.rows[i];
-  },
+  };
 
-  onRowClick(rowIdx, row) {
+  onRowClick = (rowIdx, row) => {
     let rows = this.state.rows.slice();
     rows[rowIdx] = Object.assign({}, row, {isSelected: !row.isSelected});
     this.setState({ rows });
-  },
+  };
 
-  onKeyDown(e) {
+  onKeyDown = (e) => {
     if (e.ctrlKey && e.keyCode === 65) {
       e.preventDefault();
 
@@ -58,7 +58,7 @@ const Example = createReactClass({
 
       this.setState({ rows });
     }
-  },
+  };
 
   render() {
     return  (
@@ -77,7 +77,7 @@ const Example = createReactClass({
         onRowClick={this.onRowClick}
         onGridKeyDown={this.onKeyDown} />);
   }
-});
+}
 
 const exampleDescription = (
   <div>

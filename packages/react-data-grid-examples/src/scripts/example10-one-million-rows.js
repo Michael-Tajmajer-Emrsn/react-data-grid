@@ -1,10 +1,10 @@
 const ReactDataGrid = require('react-data-grid');
 const exampleWrapper = require('../components/exampleWrapper');
 const React = require('react');
-const createReactClass = require('create-react-class');
 
-const Example = createReactClass({
-  getInitialState() {
+class Example extends React.Component {
+  constructor(props, context) {
+    super(props, context);
     this.createRows();
     this._columns = [
       { key: 'id', name: 'ID' },
@@ -14,10 +14,10 @@ const Example = createReactClass({
       { key: 'complete', name: '% Complete' }
     ];
 
-    return null;
-  },
+    this.state = null;
+  }
 
-  createRows() {
+  createRows = () => {
     let rows = [];
     for (let i = 1; i < 1000000; i++) {
       rows.push({
@@ -30,11 +30,11 @@ const Example = createReactClass({
     }
 
     this._rows = rows;
-  },
+  };
 
-  rowGetter(i) {
+  rowGetter = (i) => {
     return this._rows[i];
-  },
+  };
 
   render() {
     return  (
@@ -44,7 +44,7 @@ const Example = createReactClass({
         rowsCount={this._rows.length}
         minHeight={500} />);
   }
-});
+}
 
 module.exports = exampleWrapper({
   WrappedComponent: Example,

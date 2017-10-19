@@ -1,7 +1,6 @@
 const ReactDataGrid = require('react-data-grid');
 const exampleWrapper = require('../components/exampleWrapper');
 const React = require('react');
-const createReactClass = require('create-react-class');
 
 function createRows() {
   let rows = [];
@@ -49,17 +48,18 @@ let columns = [
   }
 ];
 
-const Example = createReactClass({
-  getInitialState() {
+class Example extends React.Component {
+  constructor(props) {
+    super(props);
     let rows = createRows();
-    return { expanded: {}, rows: rows };
-  },
+    this.state = { expanded: {}, rows: rows };
+  }
 
-  getRows(i) {
+  getRows = (i) => {
     return this.state.rows[i];
-  },
+  };
 
-  getSubRowDetails(rowItem) {
+  getSubRowDetails = (rowItem) => {
     let isExpanded = this.state.expanded[rowItem.name] ? this.state.expanded[rowItem.name] : false;
     return {
       group: rowItem.children && rowItem.children.length > 0,
@@ -70,9 +70,9 @@ const Example = createReactClass({
       siblingIndex: rowItem.siblingIndex,
       numberSiblings: rowItem.numberSiblings
     };
-  },
+  };
 
-  onCellExpand(args) {
+  onCellExpand = (args) => {
     let rows = this.state.rows.slice(0);
     let rowKey = args.rowData.name;
     let rowIndex = rows.indexOf(args.rowData);
@@ -89,16 +89,16 @@ const Example = createReactClass({
     }
 
     this.setState({ expanded: expanded, rows: rows });
-  },
+  };
 
-  updateSubRowDetails(subRows, parentTreeDepth) {
+  updateSubRowDetails = (subRows, parentTreeDepth) => {
     let treeDepth = parentTreeDepth || 0;
     subRows.forEach((sr, i) => {
       sr.treeDepth = treeDepth + 1;
       sr.siblingIndex = i;
       sr.numberSiblings = subRows.length;
     });
-  },
+  };
 
   render() {
     return (<ReactDataGrid
@@ -110,7 +110,7 @@ const Example = createReactClass({
       minHeight={500}
       onCellExpand={this.onCellExpand} />);
   }
-});
+}
 
 module.exports = exampleWrapper({
   WrappedComponent: Example,

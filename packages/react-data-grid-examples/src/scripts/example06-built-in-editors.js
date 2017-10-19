@@ -1,7 +1,6 @@
 const ReactDataGrid = require('react-data-grid');
 const exampleWrapper = require('../components/exampleWrapper');
 const React = require('react');
-const createReactClass = require('create-react-class');
 const { Editors, Formatters } = require('react-data-grid-addons');
 
 const { AutoComplete: AutoCompleteEditor, DropDownEditor } = Editors;
@@ -23,8 +22,9 @@ const IssueTypesEditor = <DropDownEditor options={issueTypes}/>;
 
 const IssueTypesFormatter = <DropDownFormatter options={issueTypes} value="bug"/>;
 
-const Example = createReactClass({
-  getInitialState() {
+class Example extends React.Component {
+  constructor(props, context) {
+    super(props, context);
     this._columns = [
       {
         key: 'id',
@@ -49,10 +49,10 @@ const Example = createReactClass({
       }
     ];
 
-    return { rows: this.createRows(1000) };
-  },
+    this.state = { rows: this.createRows(1000) };
+  }
 
-  createRows(numberOfRows) {
+  createRows = (numberOfRows) => {
     let rows = [];
     for (let i = 1; i < numberOfRows; i++) {
       rows.push({
@@ -64,13 +64,13 @@ const Example = createReactClass({
     }
 
     return rows;
-  },
+  };
 
-  rowGetter(i) {
+  rowGetter = (i) => {
     return this.state.rows[i];
-  },
+  };
 
-  handleGridRowsUpdated({ fromRow, toRow, updated }) {
+  handleGridRowsUpdated = ({ fromRow, toRow, updated }) => {
     let rows = this.state.rows.slice();
 
     for (let i = fromRow; i <= toRow; i++) {
@@ -80,7 +80,7 @@ const Example = createReactClass({
     }
 
     this.setState({ rows });
-  },
+  };
 
   render() {
     return (
@@ -92,7 +92,7 @@ const Example = createReactClass({
         minHeight={500}
         onGridRowsUpdated={this.handleGridRowsUpdated} />);
   }
-});
+}
 
 const exampleDescription = (
   <p>This example uses the built in <strong>Autocomplete</strong> editor for the priorities column and the <strong>DropdownEditor</strong> for the IssueType column. <strong>You must include the <code>react-data-grid.ui-plugins.js</code> package to use the built in editors.</strong></p>);

@@ -1,4 +1,5 @@
 const React = require('react');
+const createReactClass = require('create-react-class');
 const ReactDOM = require('react-dom');
 const joinClasses = require('classnames');
 const PropTypes = require('prop-types');
@@ -6,7 +7,6 @@ const ScrollShim = require('./ScrollShim');
 const Row = require('./Row');
 const cellMetaDataShape = require('./PropTypeShapes/CellMetaDataShape');
 const RowUtils = require('./RowUtils');
-const createReactClass = require('create-react-class');
 require('../../../themes/react-data-grid-core.css');
 
 import shallowEqual from 'fbjs/lib/shallowEqual';
@@ -14,6 +14,7 @@ import RowsContainer from './RowsContainer';
 import RowGroup from './RowGroup';
 
 const Canvas = createReactClass({
+  displayName: 'Canvas',
   mixins: [ScrollShim],
 
   propTypes: {
@@ -323,7 +324,6 @@ const Canvas = createReactClass({
           width={this.props.width}
           rows={rows}
           contextMenu={this.props.contextMenu}
-          contextMenuId={this.props.contextMenuId}
           rowIdx={this.props.cellMetaData.selected.rowIdx}
           idx={this.props.cellMetaData.selected.idx} />
       </div>

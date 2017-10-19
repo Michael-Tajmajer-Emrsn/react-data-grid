@@ -1,4 +1,5 @@
-const createReactClass = require('create-react-class');
+var createReactClass = require('create-react-class');
+
 module.exports = createReactClass({
   render: function () {
     return (

@@ -1,22 +1,21 @@
 const React              = require('react');
 const PropTypes          = require('prop-types');
-const joinClasses        = require('classnames');
-const createReactClass   = require('create-react-class');
+const joinClasses         = require('classnames');
 const DEFINE_SORT = {
   ASC: 'ASC',
   DESC: 'DESC',
   NONE: 'NONE'
 };
 
-const SortableHeaderCell = createReactClass({
-  propTypes: {
+class SortableHeaderCell extends React.Component {
+  static propTypes = {
     columnKey: PropTypes.string.isRequired,
     column: PropTypes.shape({ name: PropTypes.node }),
     onSort: PropTypes.func.isRequired,
     sortDirection: PropTypes.oneOf(Object.keys(DEFINE_SORT))
-  },
+  };
 
-  onClick: function() {
+  onClick = () => {
     let direction;
     switch (this.props.sortDirection) {
     default:
@@ -35,17 +34,17 @@ const SortableHeaderCell = createReactClass({
     this.props.onSort(
       this.props.columnKey,
       direction);
-  },
+  };
 
-  getSortByText: function() {
+  getSortByText = () => {
     let unicodeKeys = {
       ASC: '9650',
       DESC: '9660'
     };
     return this.props.sortDirection === 'NONE' ? '' : String.fromCharCode(unicodeKeys[this.props.sortDirection]);
-  },
+  };
 
-  render: function(): ?ReactElement {
+  render(): ?ReactElement {
     let className = joinClasses({
       'react-grid-HeaderCell-sortable': true,
       'react-grid-HeaderCell-sortable--ascending': this.props.sortDirection === 'ASC',
@@ -61,7 +60,7 @@ const SortableHeaderCell = createReactClass({
       </div>
     );
   }
-});
+}
 
 module.exports = SortableHeaderCell;
 module.exports.DEFINE_SORT = DEFINE_SORT;
