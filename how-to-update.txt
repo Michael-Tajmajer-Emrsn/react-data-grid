@@ -18,6 +18,10 @@ npm run build
 npm run beforepublish
 Then in your project, you can copy the output files to your node_modules/react-data-grid* folders:
 
+
+See: https://github.com/adazzle/react-data-grid/blob/master/CONTRIBUTING.md
+
+
 cd /path/to/your/project
 rm -r node_modules/react-data-grid
 cp -r /path/to/our/build/react-data-grid/packages/react-data-grid node_modules/

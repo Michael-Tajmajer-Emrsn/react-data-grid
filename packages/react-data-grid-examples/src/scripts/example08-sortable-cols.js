@@ -1,9 +1,8 @@
 const ReactDataGrid = require('react-data-grid');
 const exampleWrapper = require('../components/exampleWrapper');
 const React = require('react');
-const createReactClass = require('create-react-class');
 
-const Example = React.createClass({
+class Example extends React.Component {
   constructor(props, context) {
     super(props, context);
     this._columns = [

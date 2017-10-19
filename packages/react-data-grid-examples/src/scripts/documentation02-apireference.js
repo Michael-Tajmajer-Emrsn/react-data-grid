@@ -1,6 +1,5 @@
 const createReactClass = require('create-react-class');
 var GridRowsUpdateEvent = 'type GridRowsUpdateEvent = {\n\tcellKey: string,\n\tfromRow: number,\n\ttoRow: number,\n\trowIds: array,\n\tupdated: object,\n\taction: string\n}';
-var createReactClass = require('create-react-class');
 
 module.exports = createReactClass({
   render: function () {
