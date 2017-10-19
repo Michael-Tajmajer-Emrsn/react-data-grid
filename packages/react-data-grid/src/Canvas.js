@@ -324,6 +324,7 @@ const Canvas = createReactClass({
           width={this.props.width}
           rows={rows}
           contextMenu={this.props.contextMenu}
+          contextMenuId={this.props.contextMenuId}
           rowIdx={this.props.cellMetaData.selected.rowIdx}
           idx={this.props.cellMetaData.selected.idx} />
       </div>
