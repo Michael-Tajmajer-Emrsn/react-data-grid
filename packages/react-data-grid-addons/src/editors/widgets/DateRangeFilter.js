@@ -3,7 +3,6 @@ const PropTypes  = require('prop-types');
 const ReactDOM   = require('react-dom');
 const Moment 		 = require('moment');
 const $					 = require('jquery');
-const createReactClass = require('create-react-class');
 
 const DateRangePicker = function(element, options, cb) {
 	// by default, the daterangepicker element is placed at the bottom of HTML body
