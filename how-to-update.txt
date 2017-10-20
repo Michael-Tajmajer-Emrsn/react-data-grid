@@ -21,6 +21,15 @@ Then in your project, you can copy the output files to your node_modules/react-d
 
 See: https://github.com/adazzle/react-data-grid/blob/master/CONTRIBUTING.md
 
+command	outcome
+npm test	runs tests in release mode
+npm run dev-test	runs tests in debug mode
+npm run dev-server	starts webpack dev server
+npm run eslint	runs the eslint task (runs automatically before npm test)
+npm run build	build the project in release mode
+npm run postinstall	boostraps the packages and fetches the individual dependencies (runs automatically after npm install)
+
+
 
 cd /path/to/your/project
 rm -r node_modules/react-data-grid
