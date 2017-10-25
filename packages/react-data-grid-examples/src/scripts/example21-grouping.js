@@ -10,6 +10,8 @@ const {
   Formatters: { ImageFormatter }
 } = require('react-data-grid-addons');
 
+import PropTypes from 'prop-types';
+
 faker.locale = 'en_GB';
 
 const createFakeRowObjectData = (index) => ({

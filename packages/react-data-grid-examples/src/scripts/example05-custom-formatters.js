@@ -3,6 +3,8 @@ const exampleWrapper = require('../components/exampleWrapper');
 const React = require('react');
 const PropTypes = require('prop-types');
 
+import PropTypes from 'prop-types';
+
 // Custom Formatter component
 class PercentCompleteFormatter extends React.Component {
   static propTypes = {

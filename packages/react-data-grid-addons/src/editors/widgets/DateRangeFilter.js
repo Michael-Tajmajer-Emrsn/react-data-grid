@@ -1,6 +1,6 @@
-const React      = require('react');
-const PropTypes  = require('prop-types');
-const ReactDOM   = require('react-dom');
+const React = require('react');
+import PropTypes from 'prop-types';
+const ReactDOM = require('react-dom');
 const Moment 		 = require('moment');
 const $					 = require('jquery');
 

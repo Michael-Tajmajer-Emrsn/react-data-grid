@@ -1,6 +1,6 @@
 const React                = require('react');
+import PropTypes from 'prop-types';
 const createReactClass = require('create-react-class');
-const PropTypes            = require('prop-types');
 const Header               = require('./Header');
 const Viewport             = require('./Viewport');
 const GridScrollMixin      = require('./GridScrollMixin');

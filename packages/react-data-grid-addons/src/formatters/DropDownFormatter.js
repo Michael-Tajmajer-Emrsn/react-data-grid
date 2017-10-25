@@ -1,7 +1,7 @@
 // Used for displaying the value of a dropdown (using DropDownEditor) when not editing it.
 // Accepts the same parameters as the DropDownEditor.
 const React = require('react');
-const PropTypes = require('prop-types');
+import PropTypes from 'prop-types';
 
 class DropDownFormatter extends React.Component {
   static propTypes = {

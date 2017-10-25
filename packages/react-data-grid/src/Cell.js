@@ -1,6 +1,6 @@
 import _ from 'underscore';
 const React = require('react');
-const PropTypes = require('prop-types');
+import PropTypes from 'prop-types';
 const joinClasses = require('classnames');
 const EditorContainer = require('./editors/EditorContainer');
 const ExcelColumn = require('./PropTypeShapes/ExcelColumn');

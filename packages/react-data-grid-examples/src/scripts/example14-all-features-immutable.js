@@ -14,6 +14,8 @@ const {
     { ImageFormatter }} = require('react-data-grid-addons');
 const faker = require('faker');
 
+import PropTypes from 'prop-types';
+
 const counties = [
   { id: 0, title: 'Bedfordshire'},
   { id: 1, title: 'Berkshire'},
@@ -185,7 +187,7 @@ class MyContextMenu extends React.Component {
 
 class Component extends React.Component {
   static propTypes = {
-    handleCellDrag: React.PropTypes.func.isRequired
+    handleCellDrag: PropTypes.func.isRequired
   };
 
   constructor(props) {

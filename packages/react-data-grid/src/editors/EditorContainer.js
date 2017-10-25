@@ -1,5 +1,5 @@
 const React                   = require('react');
-const PropTypes               = require('prop-types');
+import PropTypes from 'prop-types';
 const createReactClass = require('create-react-class');
 const joinClasses              = require('classnames');
 const keyboardHandlerMixin    = require('../KeyboardHandlerMixin');
@@ -243,7 +243,7 @@ const EditorContainer = createReactClass({
     return (relatedTarget.className.indexOf('react-grid-Viewport') > -1);
   },
 
-  isClickInisdeEditor(e) {
+  isClickInsideEditor(e) {
     let relatedTarget = this.getRelatedTarget(e);
     return (e.currentTarget.contains(relatedTarget) || (relatedTarget.className.indexOf('editing') > -1 || relatedTarget.className.indexOf('react-grid-Cell') > -1));
   },
@@ -266,7 +266,7 @@ const EditorContainer = createReactClass({
 
     if (!this.isBodyClicked(e)) {
 	    // prevent null reference
-      if (this.isViewportClicked(e) || !this.isClickInisdeEditor(e)) {
+      if (this.isViewportClicked(e) || !this.isClickInsideEditor(e)) {
         this.commit(e);
       }
     }

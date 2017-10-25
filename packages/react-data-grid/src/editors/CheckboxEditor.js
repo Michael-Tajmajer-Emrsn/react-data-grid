@@ -1,5 +1,5 @@
 const React = require('react');
-const PropTypes = require('prop-types');
+import PropTypes from 'prop-types';
 require('../../../../themes/react-data-grid-checkbox.css');
 
 class CheckboxEditor extends React.Component {

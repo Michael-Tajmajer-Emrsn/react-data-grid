@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+
 import { DropTarget } from 'react-dnd';
 import GroupedColumnButton from './GroupedColumnButton';
 import { _constants } from 'react-data-grid';

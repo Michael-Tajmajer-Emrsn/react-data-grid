@@ -4,6 +4,8 @@ const exampleWrapper = require('../components/exampleWrapper');
 const React = require('react');
 const PropTypes = require('prop-types');
 
+import PropTypes from 'prop-types';
+
 class RowRenderer extends React.Component {
   static propTypes = {
     idx: PropTypes.string.isRequired

@@ -1,6 +1,7 @@
 const React = require('react');
 const PropTypes = require('prop-types');
 require('../../../../themes/react-data-grid-toolbar.css');
+import PropTypes from 'prop-types';
 
 class Toolbar extends React.Component {
   static propTypes = {

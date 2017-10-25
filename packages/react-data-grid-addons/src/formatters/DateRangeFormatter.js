@@ -1,7 +1,7 @@
 
 const React          = require('react');
 const moment         = require('moment');
-const PropTypes      = require('prop-types');
+import PropTypes from 'prop-types';
 
 class DateRangeFormatter extends React.Component {
   static propTypes = {

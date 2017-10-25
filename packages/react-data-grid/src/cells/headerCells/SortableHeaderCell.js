@@ -1,5 +1,5 @@
 const React              = require('react');
-const PropTypes          = require('prop-types');
+import PropTypes from 'prop-types';
 const joinClasses         = require('classnames');
 const DEFINE_SORT = {
   ASC: 'ASC',

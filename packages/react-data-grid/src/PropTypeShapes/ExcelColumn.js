@@ -1,5 +1,4 @@
-/* @flow */
-const PropTypes = require('prop-types');
+import PropTypes from 'prop-types';
 
 const ExcelColumnShape = {
   name: PropTypes.node.isRequired,

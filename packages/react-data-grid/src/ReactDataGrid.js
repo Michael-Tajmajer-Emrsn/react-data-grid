@@ -1,5 +1,5 @@
 const React                 = require('react');
-const PropTypes             = require('prop-types');
+import PropTypes from 'prop-types';
 const createReactClass = require('create-react-class');
 const ReactDOM = require('react-dom');
 const BaseGrid              = require('./Grid');

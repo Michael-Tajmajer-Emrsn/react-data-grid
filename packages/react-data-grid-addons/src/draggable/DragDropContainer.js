@@ -6,6 +6,7 @@ import DraggableHeaderCell from './DraggableHeaderCell';
 import RowDragLayer from './RowDragLayer';
 import { utils } from 'react-data-grid';
 const { isColumnsImmutable } = utils;
+import PropTypes from 'prop-types';
 
 class DraggableContainer extends Component {
 
