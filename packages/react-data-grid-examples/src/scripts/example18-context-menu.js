@@ -1,5 +1,4 @@
 const ReactDataGrid = require('react-data-grid');
-const PropTypes = require('prop-types');
 const exampleWrapper = require('../components/exampleWrapper');
 const React = require('react');
 const { Menu: { ContextMenu, MenuItem, SubMenu } } = require('react-data-grid-addons');

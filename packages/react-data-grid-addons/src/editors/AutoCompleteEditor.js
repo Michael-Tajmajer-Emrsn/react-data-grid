@@ -1,5 +1,4 @@
 const React                   = require('react');
-const PropTypes               = require('prop-types');
 const ReactDOM                = require('react-dom');
 const ReactAutocomplete       = require('ron-react-autocomplete');
 const { shapes: { ExcelColumn } } = require('react-data-grid');

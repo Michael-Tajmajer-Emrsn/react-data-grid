@@ -1,4 +1,4 @@
-const PropTypes           = require('prop-types');
+const React               = require('react');
 const shallowCloneObject  = require('./shallowCloneObject');
 import PropTypes from 'prop-types';
 

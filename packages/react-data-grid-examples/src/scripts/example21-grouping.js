@@ -1,5 +1,4 @@
 const faker = require('faker');
-const PropTypes = require('prop-types');
 const ReactDataGrid = require('react-data-grid');
 const exampleWrapper = require('../components/exampleWrapper');
 const React = require('react');
