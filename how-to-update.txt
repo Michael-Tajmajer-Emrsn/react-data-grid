@@ -18,6 +18,11 @@ npm run build
 npm run beforepublish
 Then in your project, you can copy the output files to your node_modules/react-data-grid* folders:
 
+Or, in our case run npm publish in the grid and addons folders:
+/mnt/d/Working/react-data-grid.emrsn/packages/react-data-grid
+/mnt/d/Working/react-data-grid.emrsn/packages/react-data-grid-addons
+
+
 
 See: https://github.com/adazzle/react-data-grid/blob/master/CONTRIBUTING.md
 
@@ -28,6 +33,8 @@ npm run dev-server	starts webpack dev server
 npm run eslint	runs the eslint task (runs automatically before npm test)
 npm run build	build the project in release mode
 npm run postinstall	boostraps the packages and fetches the individual dependencies (runs automatically after npm install)
+
+
 
 
 
