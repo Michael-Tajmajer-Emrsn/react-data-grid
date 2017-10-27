@@ -69,6 +69,7 @@ const ReactDataGrid = createReactClass({
     onFilter: PropTypes.func,
     onCellCopyPaste: PropTypes.func,
     onCellsDragged: PropTypes.func,
+    getCellActions: PropTypes.func,
     onAddFilter: PropTypes.func,
     onGridSort: PropTypes.func,
     onDragHandleDoubleClick: PropTypes.func,
@@ -203,11 +204,15 @@ const ReactDataGrid = createReactClass({
     }
   },
 
-  onCellClick: function(cell: SelectedType) {
+  onCellClick: function(cell: SelectedType, e: SyntheticEvent) {
     this.onSelect({rowIdx: cell.rowIdx, idx: cell.idx});
 
     if (this.props.onRowClick && typeof this.props.onRowClick === 'function') {
       this.props.onRowClick(cell.rowIdx, this.props.rowGetter(cell.rowIdx), this.getColumn(cell.idx));
+    }
+
+    if (e) {
+      e.stopPropagation();
     }
   },
 
@@ -218,13 +223,12 @@ const ReactDataGrid = createReactClass({
     }
   },
 
-  onCellDoubleClick: function(cell: SelectedType) {
+  onCellDoubleClick: function(cell: SelectedType, e: SyntheticEvent) {
     this.onSelect({rowIdx: cell.rowIdx, idx: cell.idx});
-    this.setActive('DoubleClick');
-  },
-
-  onViewportDoubleClick: function() {
     this.setActive();
+    if (e) {
+      e.stopPropagation();
+    }
   },
 
   onPressArrowUp(e: SyntheticEvent) {
@@ -800,6 +804,11 @@ const ReactDataGrid = createReactClass({
     }
   },
 
+  deselect() {
+    const selected = {rowIdx: -1, idx: -1};
+    this.setState({selected});
+  },
+
   setActive(keyPressed: string) {
     let rowIdx = this.state.selected.rowIdx;
     let row = this.props.rowGetter(rowIdx);
@@ -919,6 +928,7 @@ const ReactDataGrid = createReactClass({
       onRowExpandToggle: this.onRowExpandToggle,
       onRowHover: this.onRowHover,
       getDataGridDOMNode: this.getDataGridDOMNode,
+      getCellActions: this.props.getCellActions,
       onDeleteSubRow: this.props.onDeleteSubRow,
       onAddSubRow: this.props.onAddSubRow,
       isScrollingVerticallyWithKeyboard: this.isKeyDown(KeyCodes.DownArrow) || this.isKeyDown(KeyCodes.UpArrow),
@@ -965,7 +975,8 @@ const ReactDataGrid = createReactClass({
             onViewportKeyup={this.onKeyUp}
             onViewportDragStart={this.onDragStart}
             onViewportDragEnd={this.handleDragEnd}
-            onViewportDoubleClick={this.onViewportDoubleClick}
+            onViewportClick={this.deselect}
+            onViewportDoubleClick={this.deselect}
             onColumnResize={this.onColumnResize}
             rowScrollTimeout={this.props.rowScrollTimeout}
             contextMenu={this.props.contextMenu}
