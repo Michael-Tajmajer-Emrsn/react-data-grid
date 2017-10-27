@@ -165,6 +165,13 @@ declare namespace AdazzleReactDataGrid {
          * @default false
          */
         enableCellSelect?: boolean
+
+        /**
+         * Enables cells to be dragged and dropped 
+         * @default false
+         */
+        enableDragAndDrop?: boolean
+        
         /**
          * Called when a cell is selected.
          * @param coordinates The row and column indices of the selected cell.
@@ -202,6 +209,13 @@ declare namespace AdazzleReactDataGrid {
          * @param row object behind the row
          */
         onRowClick?: (rowIdx : number, row : object) => void
+
+        /**
+         * An event function called when a row is expanded with the toggle
+         * @param props OnRowExpandToggle object
+         */
+        onRowExpandToggle?: (props: OnRowExpandToggle ) => void
+        
         /**
          * Responsible for returning an Array of values that can be used for filtering
          * a column that is column.filterable and using a column.filterRenderer that 
@@ -424,6 +438,24 @@ declare namespace AdazzleReactDataGrid {
     }
 
     /**
+     * Information about the row toggler
+     */
+    interface OnRowExpandToggle {
+        /**
+         * The name of the column group the row is in
+         */
+        columnGroupName: string
+        /**
+         * The name of the expanded row
+         */
+        name: string
+        /**
+         * If it should expand or not
+         */
+        shouldExpand: boolean
+    }
+
+    /**
      * Some filter to be applied to the grid's contents
      */
     interface Filter {
@@ -459,6 +491,7 @@ declare namespace AdazzleReactDataGrid {
         export import DragHandleDoubleClickEvent = AdazzleReactDataGrid.DragHandleDoubleClickEvent;
         export import CellCopyPasteEvent = AdazzleReactDataGrid.CellCopyPasteEvent;
         export import GridRowsUpdatedEvent = AdazzleReactDataGrid.GridRowsUpdatedEvent;
+        export import OnRowExpandToggle = AdazzleReactDataGrid.OnRowExpandToggle;
 
         // Actual classes exposed on module.exports
         /**
@@ -520,14 +553,14 @@ declare namespace AdazzleReactDataGridPlugins {
     }
 }
 
-declare module "emrsn-react-data-grid" {
+declare module "react-data-grid" {
     import ReactDataGrid = AdazzleReactDataGrid.ReactDataGrid;
 
     // commonjs export
     export = ReactDataGrid;
 }
 
-declare module "emrsn-react-data-grid-addons" {
+declare module "react-data-grid-addons" {
     import Plugins = AdazzleReactDataGridPlugins;
     import Editors = Plugins.Editors;
     import Filters = Plugins.Filters;
