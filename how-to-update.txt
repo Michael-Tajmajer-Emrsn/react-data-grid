@@ -36,6 +36,18 @@ npm run postinstall	boostraps the packages and fetches the individual dependenci
 
 
 
+As opposed to publishing, we can pack the module.
+See: http://podefr.tumblr.com/post/30488475488/locally-test-your-npm-modules-without-publishing
+
+To create a local npm, change directory to where its package.json is.
+
+cd /path/to/package.json
+Then run the pack command:
+
+npm pack
+This will create, in the same directory, a tarball named after the name of the project + the version specified in the package.json.
+
+
 
 
 cd /path/to/your/project
