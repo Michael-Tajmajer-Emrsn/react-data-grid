@@ -29,11 +29,10 @@ class HeaderCell extends React.Component {
   state: {resizing: boolean} = {resizing: false};
 
   onDragStart = (e: SyntheticMouseEvent) => {
-    // get the scale
+    // get the X scale
     const node = ReactDOM.findDOMNode(e.target);
     const boundingRectangle = node.getBoundingClientRect();
-    const scaledWidth = boundingRectangle.right - boundingRectangle.left;
-    const scale = scaledWidth / node.offsetWidth;
+    const scale = boundingRectangle.width / node.offsetWidth;
 
     this.setState({resizing: true, scale});
     // need to set dummy data for FF
