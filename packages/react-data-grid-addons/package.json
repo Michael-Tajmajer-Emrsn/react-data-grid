@@ -15,7 +15,7 @@
   "author": "Adazzle",
   "license": "MIT",
   "dependencies": {
-    "react-data-grid": "^2.0.73"
+    "emrsn-react-data-grid": "^2.0.73"
   },
   "devDependencies": {
     "jquery": "^2.2.4",
