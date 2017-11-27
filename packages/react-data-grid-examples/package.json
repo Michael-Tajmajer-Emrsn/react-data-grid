@@ -18,8 +18,8 @@
   "license": "MIT",
   "dependencies": {
     "immutability-helper": "^2.4.0",
-    "emrsn-react-data-grid": "^2.0.76",
-    "emrsn-react-data-grid-addons": "^2.0.76"
+    "react-data-grid": "^2.0.76",
+    "react-data-grid-addons": "^2.0.76"    
   },
   "devDependencies": {
     "bootstrap": "^3.3.7",
