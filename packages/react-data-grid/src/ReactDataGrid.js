@@ -118,7 +118,8 @@ const ReactDataGrid = createReactClass({
     overScan: PropTypes.object,
     onDeleteSubRow: PropTypes.func,
     onAddSubRow: PropTypes.func,
-    enableCellAutoFocus: PropTypes.bool
+    enableCellAutoFocus: PropTypes.bool,
+    onBeforeEdit: PropTypes.func
   },
 
   getDefaultProps(): {enableCellSelect: boolean} {
@@ -138,7 +139,8 @@ const ReactDataGrid = createReactClass({
         rowsStart: 5,
         rowsEnd: 5
       },
-      enableCellAutoFocus: true
+      enableCellAutoFocus: true,
+      onBeforeEdit: () => {}
     };
   },
 
@@ -831,6 +833,7 @@ const ReactDataGrid = createReactClass({
         } else {
           this.setState({selected}, () => { this.scrollToColumn(idx); });
         }
+        this.props.onBeforeEdit();
         this.handleCancelCopy();
       }
     }
