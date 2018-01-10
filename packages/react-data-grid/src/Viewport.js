@@ -39,6 +39,7 @@ const Viewport = createReactClass({
     cellMetaData: PropTypes.shape(cellMetaDataShape),
     rowKey: PropTypes.string.isRequired,
     rowScrollTimeout: PropTypes.number,
+    scrollToRowIndex: PropTypes.number,
     contextMenu: PropTypes.element,
     contextMenuId: PropTypes.string,
     getSubRowDetails: PropTypes.func,
@@ -105,6 +106,7 @@ const Viewport = createReactClass({
           onScroll={this.onScroll}
           onRows={this.props.onRows}
           rowScrollTimeout={this.props.rowScrollTimeout}
+          scrollToRowIndex={this.props.scrollToRowIndex}
           contextMenu={this.props.contextMenu}
           contextMenuId={this.props.contextMenuId}
           rowSelection={this.props.rowSelection}

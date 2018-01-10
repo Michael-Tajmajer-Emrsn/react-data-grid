@@ -173,6 +173,11 @@ type: `string`
 type: `enum('ASC'|'DESC'|'NONE')`
 
 
+### `tabIndex`
+
+type: `number`
+
+
 ### `totalWidth`
 
 type: `union(number|string)`
