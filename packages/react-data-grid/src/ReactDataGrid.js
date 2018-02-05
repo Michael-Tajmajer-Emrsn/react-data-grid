@@ -367,6 +367,10 @@ class ReactDataGrid extends React.Component {
     }
   };
 
+  onCellFocus = (cell: SelectedType) => {
+    this.onSelect(cell);
+  };
+
   onCellContextMenu = (cell: SelectedType) => {
     this.onSelect({rowIdx: cell.rowIdx, idx: cell.idx, contextMenuDisplayed: this.props.contextMenu});
     if (this.props.contextMenu) {
@@ -1178,6 +1182,7 @@ class ReactDataGrid extends React.Component {
       dragged: this.state.dragged,
       hoveredRowIdx: this.state.hoveredRowIdx,
       onCellClick: this.onCellClick,
+      onCellFocus: this.onCellFocus,
       onCellContextMenu: this.onCellContextMenu,
       onCellDoubleClick: this.onCellDoubleClick,
       onCommit: this.onCellCommit,
